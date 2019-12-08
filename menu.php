@@ -1,11 +1,21 @@
+<?PHP
+include "../core/produitC.php";
+$produit1C=new produitCore();
+$listeproduit=$produit1C->getMenu();
+?> 
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Le SURFIN - Restaurant</title>
+	<title>Le surfin - Restaurant </title>
 	<meta charset="UTF-8">
-	<meta name="description" content="Pulse Restaurant HTML Template">
-	<meta name="keywords" content="pulse, restaurant, creative, html">
+	<meta name="description" content="Le surfin Restaurant HTML Template">
+	<meta name="keywords" content="Le surfin, restaurant, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
 	<!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
@@ -16,7 +26,6 @@
 	<link rel="stylesheet" href="css/owl.carousel.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 	<link rel="stylesheet" href="css/animate.css"/>
-
 
 
 
@@ -31,7 +40,7 @@
 	<header class="header-section">
 		<div class="header-warp">
 			<div class="site-logo">
-				<h2>Pulse<span>.</span></h2>
+				<h2>Le Surfin<span>.</span></h2>
 			</div>
 			<!-- responsive -->
 			<div class="nav-switch">
@@ -40,14 +49,13 @@
 			<!-- menu -->
 			<ul class="main-menu">
 				<li><a href="../view/index.html">Home</a></li>
-				<li><a href="../view/about.html" class="active">About us</a></li>
-				<li><a href="../view/menu.php">Menu</a></li>
-				<li><a href="../view/blog.html">promotions</a></li>
+				<li><a href="../view/about.html">About us</a></li>
+				<li><a href="../view/menu.php" class="active">Menu</a></li>
+				<li><a href="../view/blog.html" >Promotions</a></li>
 				<li><a href="../view/contact.html">Contact</a></li>
 			</ul>
 			<div class="header-right">
-				<p><span>Reservations</span> <i class="fa fa-phone"></i> 
-					73 225 871</p>			
+				<p><span>Reservations</span> <i class="fa fa-phone"></i> 73 225 871</p>			
 			</div>
 		</div>
 	</header>
@@ -55,90 +63,101 @@
 
 
 	<!-- Page info section -->
-	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/1.jpg">
+	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/2.jpg">
 		<div class="ptf-center">
 			<div class="container">
-				<h2>About us<span>.</span></h2>
+				<h2>The menu<span>.</span></h2>
 			</div>
 		</div>
 	</section>
 	<!-- Page info section end -->
 
 
-	<!-- Intro section -->
-	<section class="inter-section spad">
-		<div class="container">
-			<div class="section-title">
-				<i class="flaticon-019-rib"></i>
-				<h2>Apropos de nous</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<p>Restaurant LE SURFIN est un restaurant touristique familial ,on vous accuille chaleureusement et on vous sevira nos meilleurs plats deliceux avec des poissons toujours frais et sanctueux</p>
-				</div>
-				<div class="col-md-6">
-					<p>Les fruits de mers sont notre specialités , tous les fans de poissons ,crevettes ,moules et toutes nouritures marines ,soyez les bienvenus chez nous </p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Intro section end -->
+	<!-- Menu section -->
+    <section class="section bg-light  top-slant-white bottom-slant-gray">
+<br>
+<br>
+<br>
+<div class="clearfix mb-5 pb-5">
+  <div class="container-fluid">
+    <div class="row" data-aos="fade">
+      <div class="col-md-12 text-center heading-wrap">
+        <h1 > ** Our Menu **</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+<div id="slider">
 
-	<!-- Chefs section -->
-	<section class="chefs-section set-bg" data-setbg="img/chefs-bg.jpg">
-		<div class="container">
-			<div class="section-title text-white">
-				<i class="flaticon-006-steak"></i>
-				<h2>Our Chefs</h2>
-			</div>
-			<div class="row chefs">
-				<div class="col-md-4 chef">
-					<img src="img/chefs/1.jpg" alt="">
-					<h4>Chef Ted Chapman</h4>
-					<p>Integer sed facilisis eros. In iaculis rhoncus velit in malesuada. In hac habitasse platea dictumst. Fusce erat ex, consectetur sit amet.</p>
-				</div>
-				<div class="col-md-4 chef">
-					<img src="img/chefs/2.jpg" alt="">
-					<h4>Chef Maria Smith</h4>
-					<p>Facilisis eros. In iaculis rhoncus velit in malesuada. In hac habitasse platea dictumst. Fusce erat ex, consectetur sit amet ornare suscipit.</p>
-				</div>
-				<div class="col-md-4 chef">
-					<img src="img/chefs/3.jpg" alt="">
-					<h4>Chef James Williams</h4>
-					<p>Sed facilisis eros. In iaculis rhoncus velit in malesuada. In hac habitasse platea dictumst. Fusce erat ex, con-sectetur sit amet ornare.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Chefs section end -->
+</div>
+<div class="input">
+  <DIV class="price">
+    <div>From</div>
+    <input id="id_cena_od" type="number" name="cena_od" value="5">
+  </DIV>
+  <DIV class="price">
+    <div>To </div>
+    <input id="id_cena_do" type="number" name="cena_do" value="20">
+  </DIV>
+</div>
+</div>
 
+<script src="slider.js"></script>
+<div class="container">
+<div class="row">
+  <?PHP
 
-	<!-- Brands section -->
-	<div class="brands-section">
-		<div class="container">
-			<div class="brands-slider owl-carousel">
-				<div class="bs-item">
-					<img src="img/brands/1.jpg" alt="">
-				</div>
-				<div class="bs-item">
-					<img src="img/brands/2.jpg" alt="">
-				</div>
-				<div class="bs-item">
-					<img src="img/brands/3.jpg" alt="">
-				</div>
-				<div class="bs-item">
-					<img src="img/brands/4.jpg" alt="">
-				</div>
-				<div class="bs-item">
-					<img src="img/brands/5.jpg" alt="">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Brands section end -->
+  $liste=$produit1C->getMenu();
+  $i=0;
+ foreach ($liste as $row) {$i++;
+                                  ?>
+    <div class="col-md-6" data-aos="fade-up" data-aos-delay="<?PHP if($i%2==1) echo "100"; else echo "200";?> ">
+      <div class="blog d-block">
+        <a class="bg-image d-block" href="single.php" style="background-image: url('img/<?PHP echo $row['image'] ?> ');"></a>
+        <div class="text">
+          <h3><a href="single.php"><?PHP echo $row['nom'] ?></a></h3>
+          <p class="sched-time"> <p><?PHP echo $row['description'] ?></p>
+           <br>
+          <span><?PHP echo $row['prix'] ?>DNT </span>
+          
+          </p>
+         
+        </div>
+        
+      </div>
+    </div>
+    <?PHP
+}    
+?>          
+<br>
+  
+  
 
+</div>
 
+<td><form method="POST" action="rechercherProduit.php">
+<h4>Recherche un menu :</h4>
+
+ <input value="<?PHP echo $row['nom']; ?>" name="nom" id="nom">
+ <input type="submit" name="rechercher" value="Find">
+ </form>
+     
+
+        </tfoot>
+       
+      </table>
+      
+      <form method="POST" action="pdf.php">
+                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-print" aria-hidden="true"></i></button>
+                                <input type="hidden" value="<?PHP echo $row['nom']; ?>" name="nom">
+                            </form>
+      </div>
+</div>      
+<br>
+<br>
+<br>         
 	<!-- Footer section -->
 	<footer class="footer-section">
 		<!-- map -->
@@ -193,7 +212,6 @@
 	<!-- load for map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
 	<script src="js/map.js"></script>
-
 	
     </body>
 </html>

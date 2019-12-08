@@ -1,0 +1,59 @@
+.container {
+  align-items: center;
+  width: 400px;
+}
+
+#slider {
+  width: 100%;
+  min-width: 200px;
+  display: flex;
+  flex-grow: 1;
+}
+
+.slider {
+  display: flex;
+  flex-grow: 1;
+  height: 20px;
+  position: relative;
+  background-color: grey;
+}
+
+.from {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0%;
+  bottom:-5px;
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.to {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: absolute;
+  left: 100%;
+  bottom:-5px;
+  background-color: lightgreen;
+  transform: translateX(-10px);
+  cursor: pointer;
+}
+
+.input {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.price {
+  text-align: center;
+}
+
+input {
+  text-align: center;
+  margin-left: 10px;
+}

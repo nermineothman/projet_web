@@ -1,5 +1,5 @@
 <?PHP
-include "produitC.php";
+include "../core/produitC.php";
 $produit1C=new produitC();
 $listeproduit=$produit1C->afficherproduits();
 
@@ -29,7 +29,7 @@ foreach($listeproduit as $row){
 	<td><?PHP echo $row['tarif']; ?></td>
 	<td><?PHP echo $row['dessert']; ?></td>
 	<td><?PHP echo $row['boissons']; ?></td>
-	<td><form method="POST" action="supprimerproduit.php">
+	<td><form method="POST" action="../view/supprimerproduit.php">
 	<input type="submit" name="supprimer" value="supprimer">
 	<input type="hidden" value="<?PHP echo $row['nom'];?>" name="nom">
 	</form>

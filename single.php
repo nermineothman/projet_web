@@ -1,10 +1,16 @@
+<?PHP
+include "../core/produitC.php";
+$produit1C=new produitCore();
+$listeproduit=$produit1C->getMenu();
+?> 
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Pulse - Restaurant HTML Template</title>
+	<title>Le surfin - Restaurant </title>
 	<meta charset="UTF-8">
-	<meta name="description" content="Pulse Restaurant HTML Template">
-	<meta name="keywords" content="pulse, restaurant, creative, html">
+	<meta name="description" content="Le surfin Restaurant HTML Template">
+	<meta name="keywords" content="Le surfin, restaurant, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
@@ -30,7 +36,7 @@
 	<header class="header-section">
 		<div class="header-warp">
 			<div class="site-logo">
-				<h2>Pulse<span>.</span></h2>
+				<h2>Le Surfin<span>.</span></h2>
 			</div>
 			<!-- responsive -->
 			<div class="nav-switch">
@@ -40,13 +46,12 @@
 			<ul class="main-menu">
 				<li><a href="../view/index.html">Home</a></li>
 				<li><a href="../view/about.html">About us</a></li>
-				<li><a href="../view/blog.html">Promotions</a></li>
-				<li><a href="../view/menu.php">Menu</a></li>
-		
-				<li><a href="../view/contact.html" class="active">Contact</a></li>
+				<li><a href="../view/menu.html" class="active">Menu</a></li>
+				<li><a href="../view/blog.html" >Promotions</a></li>
+				<li><a href="../view/contact.html">Contact</a></li>
 			</ul>
 			<div class="header-right">
-				<p><span>Reservations</span> <i class="fa fa-phone"></i> 71980546</p>			
+				<p><span>Reservations</span> <i class="fa fa-phone"></i> 73 225 871</p>			
 			</div>
 		</div>
 	</header>
@@ -54,73 +59,45 @@
 
 
 	<!-- Page info section -->
-	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/4.jpg">
+	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/2.jpg">
 		<div class="ptf-center">
 			<div class="container">
-				<h2>Contact<span>.</span></h2>
+				<h2>The menu<span>.</span></h2>
 			</div>
 		</div>
 	</section>
 	<!-- Page info section end -->
 
 
-	<!-- Contact section -->
-	<section class="contact-info-section">
-		<div class="container spad">
-			<div class="row">
-				<div class="col-lg-5">
-					<h2 class="ci-title">Contact info</h2>
-					<div class="ci-item">
-						<div class="ca-icon">
-							<img src="img/icon/1.png" alt="">
-						</div>
-						<div class="ca-text">
-								Avenue Taieb Mhiri (115,71 km)
-								4000 Sousse</div>
-					</div>
-					<div class="ci-item">
-						<div class="ca-icon">
-							<img src="img/icon/2.png" alt="">
-						</div>
-						<div class="ca-text"> 71 432 546</div>
-					</div>
-					<div class="ci-item">
-						<div class="ca-icon">
-							<img src="img/icon/3.png" alt="">
-						</div>
-						<div class="ca-text">le.surfin@gmail.com</div>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<h2 class="ci-title pt-5 pt-lg-0">Reservations</h2>
-					<div class="ci-item">
-						<div class="ca-icon">
-							<img src="img/icon/3.png" alt="">
-						</div>
-					
-					
-					<div class="ci-item">
-						<div class="ca-text pt-0"><span>Heures : 12:00 - 16:00, 18:00 - 01:00</span></div>
-					</div>
-				</div>
-				<div class="col-lg-12">
-					<div class="social-media">
-						<a href=""><i class="fa fa-pinterest"></i></a>
-						<a href="https://www.facebook.com/lesurfin/"><i class="fa fa-facebook"></i></a>
-						<a href=""><i class="fa fa-twitter"></i></a>
-						<a href=""><i class="fa fa-dribbble"></i></a>
-						<a href=""><i class="fa fa-behance"></i></a>
-						<a href=""><i class="fa fa-linkedin"></i></a>
-					</div>
-				</div>
-			</div>
-			<div class="contact-img">
-				<img src="img/contact-img.jpg" alt="">
-			</div>
-		</div>
-	</section>
-	<!-- Contact section end -->
 
+
+
+
+    <?PHP
+
+$liste=$produit1C->getMenu();
+$i=0;
+foreach ($liste as $row) {$i++;
+                                ?>
+  <div class="col-md-6" data-aos="fade-up" data-aos-delay="<?PHP if($i%2==1) echo "100"; else echo "200";?> ">
+    <div class="blog d-block">
+      <a class="bg-image d-block" href="single.php" style="background-image: url('img/<?PHP echo $row['image'] ?> ');"></a>
+      <div class="text">
+        <h3><a href="single.php"><?PHP echo $row['nom'] ?></a></h3>
+        <p class="sched-time"> <p><?PHP echo $row['description'] ?></p>
+         <br>
+        <span><?PHP echo $row['prix'] ?>DNT </span>
+        
+        </p>
+       
+      </div>
+      
+    </div>
+  </div>
+  <?PHP
+}    
+?>          
+<br>
 
 	<!-- Footer section -->
 	<footer class="footer-section">
@@ -157,7 +134,7 @@
 				</div>
 			</div>
 			<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-&copy;<script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> 
+ &copy;<script>document.write(new Date().getFullYear());</script><i class="fa fa-heart-o" aria-hidden="true"></i> 
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </div>
 		</div>
@@ -176,7 +153,6 @@
 	<!-- load for map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
 	<script src="js/map.js"></script>
-
 	
     </body>
 </html>

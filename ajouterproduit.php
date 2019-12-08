@@ -40,12 +40,12 @@
 			<ul class="main-menu">
 				<li><a href="index.html" class="active">Home</a></li>
 				<li><a href="about.html">About us</a></li>
-				<li><a href="menu.html">Restaurant</a></li>
-				<li><a href="blog.html">Promo</a></li>
+				<li><a href="menu.html">Menu</a></li>
+				<li><a href="blog.html">Promotions</a></li>
 				<li><a href="contact.html">Contact</a></li>
 			</ul>
 			<div class="header-right">
-				<p><span>Reservations</span> <i class="fa fa-phone"></i> 652-345 3222 11</p>			
+				<p><span>Reservations</span> <i class="fa fa-phone"></i> 73 225 871</p>			
 			</div>
 		</div>
 	</header>
@@ -85,8 +85,8 @@
 	
 
 <?PHP 
-include "produit.php";
-include "produitC.php";
+include "../entities/produit.php";
+include "../core/produitC.php";
 
 if (isset($_POST['nom']) and isset($_POST['entree']) and isset($_POST['platPrincipal']) and isset($_POST['dessert'])and isset($_POST['boissons']) and isset($_POST['tarif']))
     
@@ -105,9 +105,10 @@ else
 }
 ?>
 <body>
+	<fieldset>
 <form form name="insertion" method="POST" action="ajouterproduit.php">
 <table>
-<caption>Ajouter un menu</caption>
+<caption>  <center> Ajouter un menu </center></caption>
 <tr>
         <td>nom</td>
         <td><input type="text" name="nom"></td>
@@ -140,7 +141,7 @@ else
 </tr>
 </table>
 </form>
-
+</fieldset>
 <!--====== Javascripts & Jquery ======-->
 <script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

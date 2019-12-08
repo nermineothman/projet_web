@@ -1,5 +1,5 @@
 <?PHP
-include "produitC.php";
+include "../core/produitC.php";
 $produitC=new produitC();
 if (isset($_POST["nom"]))
 {

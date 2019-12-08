@@ -3,19 +3,18 @@
 </head>
 <body>
 <?PHP
-include "produitC.php";
-if (isset($_GET['refproduit'])){
+include "../core/produitC.php";
+if (isset($_GET['nom'])){
 	$produitC=new produitC();
-    $result=$produitC->reccupererproduit($_GET['refproduit']);
+    $result=$produitC->reccupererproduit($_GET['nom']);
 	foreach($result as $row){
-		$refproduit=$row['refproduit'];
-		$nomproduit=$row['nomproduit'];
-		$marque=$row['marque'];
-		$description=$row['description'];
-		$urlimage=$row['urlimage'];
-		$quantite=$row['quantite'];
-		$prixproduit=$row['prixproduit'];
-		$dateajout=$row['dateajout'];
+		$nom=$row['nom'];
+		$entree=$row['entree'];
+		$platPrincipal=$row['platPrincipal'];
+		$dessert=$row['dessert'];
+		$boissons=$row['boissons'];
+		$tarif=$row['tarif'];
+		
 ?>
 
 
@@ -24,43 +23,31 @@ if (isset($_GET['refproduit'])){
 <table>
 <caption>Modifier Produit</caption>
 <tr>
-<td>refproduit</td>
-<td><input type="text" name="refproduit" value="<?PHP echo $refproduit ;?>"></td>
+<td>nom</td>
+<td><input type="text" name="nom" value="<?PHP echo $rnom ;?>"></td>
 </tr>
 <tr>
-<td>nomproduit</td>
-<td><input type="text" name="nomproduit" value="<?PHP echo $nomproduit ;?>"></td>
+<td>entree</td>
+<td><input type="text" name="entree" value="<?PHP echo $entree ;?>"></td>
 </tr>
 <tr>
-<td>marque</td>
-<td><input type="text" name="marque" value="<?PHP echo $marque ;?>"></td>
+<td>plat Principal</td>
+<td><input type="text" name="platPrincipal" value="<?PHP echo $platPrincipal ;?>"></td>
 </tr>
 <tr>
-<td>description</td>
-<td><input type="text" name="description" value="<?PHP echo $description ;?>"></td>
+<td>dessert</td>
+<td><input type="text" name="dessert" value="<?PHP echo $dessert ;?>"></td>
 </tr>
 <tr>
-<td>quantite</td>
-<td><input type="number" name="quantite" value="<?PHP echo $quantite ;?>"></td>
-</tr>
-<tr>
-<td>prixproduit</td>
-<td><input type="number" name="prixproduit" value="<?PHP echo $prixproduit ;?>"></td>
+<td>boissons</td>
+<td><input type="number" name="boissons" value="<?PHP echo $boissons ;?>"></td>
+</tr><tr>
+<td>tarif</td>
+<td><input type="number" name="tarif" value="<?PHP echo $tarif ;?>"></td>
 </tr>
 
 <tr>
-	<td>dateajout</td>
-	<td><input type="date" name="dateajout" value="<?PHP echo $dateajout;?>"></td>
-</tr>
-<tr>
-    <td>refcategorie</td>
-    <td><input type="text" name="refcategorie" value="<?PHP echo $refcategorie;?>"></td>
-</tr>
-<tr>
-	<td><input type="submit" name="modifier" value="modifier"></td>
-</tr>
-<tr>
-	<td><input type="hidden" name="refproduit_ini" value="<?PHP echo $_GET['refproduit'];?>"></td>
+	<td><input type="text" name="nom_ini" value="<?PHP echo $_GET['nom'];?>"></td>
 </tr>
 </table>
 </form>
@@ -69,9 +56,9 @@ if (isset($_GET['refproduit'])){
 }
 if (isset($_POST['modifier']))
 {
-	$produit=new produit($_POST['refproduit'],$_POST['nomproduit'],$_POST['marque'],$_POST['description'],$_POST['quantite'],$_POST['prixproduit'],$_POST['dateajout'],$_POST['refcategorie']);
-	$produitC->modifierproduit($produit,$_POST['refproduit_ini']);
-	echo $_POST['refproduit_ini'];
+	$produit=new produit($_POST['nom'],$_POST['entree'],$_POST['platPrincipal'],$_POST['dessert'],$_POST['boissons'],$_POST['tarif']);
+	$produitC->modifierproduit($produit,$_POST['nom_ini']);
+	echo $_POST['nom_ini'];
 	header('Location:  afficherP.php');
 }
 ?>

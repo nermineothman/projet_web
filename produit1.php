@@ -18,7 +18,6 @@
 	<link rel="stylesheet" href="css/animate.css"/>
 
 
-
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -38,92 +37,68 @@
 			</div>
 			<!-- menu -->
 			<ul class="main-menu">
-				<li><a href="../view/index.html">Home</a></li>
+				<li><a href="../view/index.html" class="active">Home</a></li>
 				<li><a href="../view/about.html">About us</a></li>
+				<li><a href="../view/menu.html">Menu</a></li>
 				<li><a href="../view/blog.html">Promotions</a></li>
-				<li><a href="../view/menu.php">Menu</a></li>
-		
-				<li><a href="../view/contact.html" class="active">Contact</a></li>
+				<li><a href="../view/contact.html">Contact</a></li>
 			</ul>
 			<div class="header-right">
-				<p><span>Reservations</span> <i class="fa fa-phone"></i> 71980546</p>			
+				<p><span>Reservations</span> <i class="fa fa-phone"></i> 73 225 871</p>			
 			</div>
 		</div>
 	</header>
 	<!-- Header section end -->
 
 
-	<!-- Page info section -->
-	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/4.jpg">
-		<div class="ptf-center">
-			<div class="container">
-				<h2>Contact<span>.</span></h2>
-			</div>
-		</div>
-	</section>
-	<!-- Page info section end -->
+	
+	
+
+<?PHP 
+include "../entities/produit.php";
+include "../core/produitC.php";
+
+if (isset($_POST['nom']) and isset($_POST['entree']) and isset($_POST['platPrincipal']) and isset($_POST['dessert'])and isset($_POST['boissons']) and isset($_POST['tarif']))
+    
+
+{   
+	$produit1C=new produitC();
+	$produit1=new produit($_POST['nom'],$_POST['entree'],$_POST['platPrincipal'],$_POST['dessert'],$_POST['tarif'],$_POST['boissons']);
+	
+	$produit1C->ajouterproduit($produit1);
+	header('Location: ../view/afficherproduit.php');
+}
+
+?>
+<body>
+
+    <img src="plat.jpg" alt="">
+  <fieldset> <center>
+    <center><h2> description</h2></center> 
+    <br>
+    <p> 
+	 </p> <br>
+    <p>Des daurades toute fresh bien epicees selon votre envie et votre choix ,bien nettoyer a un prix tres resonable .....................................................................................20DT </p> <br>
+<p>        </p> <br> 
+ <p>       </p><br>
+    <br>
+    <p>        </p> <br> 
+ <p>       </p><br>
+ 
+    
+
+<form form name="insertion" method="POST" action="panier.php">
+<table>
 
 
-	<!-- Contact section -->
-	<section class="contact-info-section">
-		<div class="container spad">
-			<div class="row">
-				<div class="col-lg-5">
-					<h2 class="ci-title">Contact info</h2>
-					<div class="ci-item">
-						<div class="ca-icon">
-							<img src="img/icon/1.png" alt="">
-						</div>
-						<div class="ca-text">
-								Avenue Taieb Mhiri (115,71 km)
-								4000 Sousse</div>
-					</div>
-					<div class="ci-item">
-						<div class="ca-icon">
-							<img src="img/icon/2.png" alt="">
-						</div>
-						<div class="ca-text"> 71 432 546</div>
-					</div>
-					<div class="ci-item">
-						<div class="ca-icon">
-							<img src="img/icon/3.png" alt="">
-						</div>
-						<div class="ca-text">le.surfin@gmail.com</div>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<h2 class="ci-title pt-5 pt-lg-0">Reservations</h2>
-					<div class="ci-item">
-						<div class="ca-icon">
-							<img src="img/icon/3.png" alt="">
-						</div>
-					
-					
-					<div class="ci-item">
-						<div class="ca-text pt-0"><span>Heures : 12:00 - 16:00, 18:00 - 01:00</span></div>
-					</div>
-				</div>
-				<div class="col-lg-12">
-					<div class="social-media">
-						<a href=""><i class="fa fa-pinterest"></i></a>
-						<a href="https://www.facebook.com/lesurfin/"><i class="fa fa-facebook"></i></a>
-						<a href=""><i class="fa fa-twitter"></i></a>
-						<a href=""><i class="fa fa-dribbble"></i></a>
-						<a href=""><i class="fa fa-behance"></i></a>
-						<a href=""><i class="fa fa-linkedin"></i></a>
-					</div>
-				</div>
-			</div>
-			<div class="contact-img">
-				<img src="img/contact-img.jpg" alt="">
-			</div>
-		</div>
-	</section>
-	<!-- Contact section end -->
+<td><input  type="submit" name="ajouter" value="ajouter"></td>
+</tr>
+</table>
+</form></center>
+</fieldset>
 
-
-	<!-- Footer section -->
-	<footer class="footer-section">
+<!-- Footer section -->
+<footer class="footer-section">
 		<!-- map -->
 		<div class="map-warp" id="map-canvas"></div>
 		<div class="footer-bg-area set-bg" data-setbg="img/footer-bg.jpg">
@@ -147,7 +122,7 @@
 									<div class="col-md-12">
 										<textarea placeholder="Message"></textarea>
 										<div class="text-center">
-											<button class="site-btn">Send Message</button>
+											<button class="site-btn">send</button>
 										</div>
 									</div>
 								</div>
@@ -157,7 +132,7 @@
 				</div>
 			</div>
 			<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-&copy;<script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> 
+ &copy;<script>document.write(new Date().getFullYear());</script>  <i class="fa fa-heart-o" aria-hidden="true"></i>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </div>
 		</div>
@@ -165,8 +140,9 @@
 	<!-- Footer section end -->
 
 
-	<!--====== Javascripts & Jquery ======-->
-	<script src="js/jquery-3.2.1.min.js"></script>
+
+<!--====== Javascripts & Jquery ======-->
+<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/circle-progress.min.js"></script>
@@ -174,9 +150,8 @@
 
 
 	<!-- load for map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
+	<script src="https://wego.here.com/directions/mix//Le-surfin,-Avenue-Taieb-Mhiri,-Sousse-M%C3%A9dina,-Sousse:e-eyJuYW1lIjoiTGUgc3VyZmluIiwiYWRkcmVzcyI6IkF2ZW51ZSBUYWllYiBNaGlyaSwgU291c3NlIiwibGF0aXR1ZGUiOjM1Ljg0LCJsb25naXR1ZGUiOjEwLjYyNTYxLCJwcm92aWRlck5hbWUiOiJmYWNlYm9vayIsInByb3ZpZGVySWQiOjEzODUxNDQ2OTE2MDU0NTF9?map=35.84,10.62561,15,normal&fb_locale=fr_FR"></script>
 	<script src="js/map.js"></script>
 
-	
     </body>
 </html>

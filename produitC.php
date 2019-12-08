@@ -1,34 +1,89 @@
-<?PHP 
-include_once "config.php";
-class produitC
-{  
-		
-	 function ajouterproduit($produit)
-	{   
-		    $nom=$produit->getnom();
-            $entree=$produit->getentree();
-            $platPrincipal=$produit->getplatPrincipal();
-            $dessert=$produit->getdessert();
-            $boissons=$produit->getboissons();
-            $tarif=$produit->gettarif();
-            
-         
-		$sql="insert into produit (nom,entree,platPrincipal,dessert,boissons,tarif) values ('$nom','$entree','$platPrincipal','$dessert','$boissons','$tarif')";
+<?PHP
+include "config.php";
+class produitCore
+{
+    function getAllProduit()
+	{
+		$sql = "SElECT * From produits";
 		$db = config::getConnexion();
-		try
-		{
-			$req=$db->prepare($sql);
-			$req->execute();
-        }
-		catch(Exception $e)
-		{
-			echo "erreur:" .$e->getMessage();
+		try {
+			$liste = $db->query($sql);
+			return $liste;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
 		}
 	}
-	function afficherproduits()
+	function getMenu()
 	{
-		
-		$sql="SElECT * FROM produit";
+		$sql = "SElECT * From produits where valable=1";
+		$db = config::getConnexion();
+		try {
+			$liste = $db->query($sql);
+			return $liste;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
+		}
+	}
+
+	function deleteProduit($nom)
+	{
+		$sql = "DELETE FROM produits where nom= :nom";
+		$db = config::getConnexion();
+		$req = $db->prepare($sql);
+		$req->bindValue(':nom', $nom);
+		try {
+			$req->execute();
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
+		}
+	}
+
+	function updateProduit($produit,$nom)
+	{
+		$nom=$produit->getNom();
+		$description=$produit->getDescription();
+		$prix=$produit->getPrix();
+		$valable=$produit->getValable();
+		$image=$produit->getImage();
+		$sql = "UPDATE produits SET nom ='".$nom ."', description ='". $description."', prix=$prix ,valable=$valable , image ='".$image."' WHERE nom ='".$nom."'";
+		$db = config::getConnexion();
+		try {
+		$db->exec($sql);
+		} catch (Exception $e) {
+			echo 'Erreur: ' . $e->getMessage();
+		}
+	}
+	function creerProduit($produit)
+	{
+		$db = config::getConnexion();
+		try{
+			$nom = $produit->getNom();
+			$description = $produit->getDescription();
+			$prix = $produit->getPrix();
+			$valable = $produit->getValable();
+			$image = $produit->getImage();
+			
+			$db->exec("INSERT INTO produits(nom,description,prix,valable,image) VALUES(". $db->quote($nom) . ",".$db->quote($description).",".$db->quote($prix).",".$db->quote($valable).",".$db->quote($image).")"); 
+			
+			 
+		} catch (Exception $e) {
+			echo 'Erreur: ' . $e->getMessage();
+		}
+	
+	}
+	function getProduit($choix,$value)
+	{
+		$sql = "SELECT * FROM produits WHERE $choix='".$value."'";
+		$db = config::getConnexion();
+		try {
+			$liste = $db->query($sql);
+			return $liste;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
+		}
+	}
+	function rechercherProduit($nom){
+		$sql="SELECT * from produits where nom=$nom";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -36,85 +91,8 @@ class produitC
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        }	
-	}
-	 function afficherproduit($produit)
-	{
-       echo "nom:".$produit->getnom()."<br>";
-       echo "entree:".$produit->getentree()."<br>";
-       echo "platPrincipal".$produit->getplatPrincipal()."<br>";
-       echo "dessert:".$produit->getdessert()."<br>";
-       echo "boissons:".$produit->getboissons()."<br>";
-       echo "tarif:".$produit->gettarif()."<br>";
-      
+        }
 	}
 
-
-		function modifierproduit($produit,$nom)
-	{
-		$sql="UPDATE menu SET nom=:nom, entree=:entree,platPrincipal=:platPrincipal,dessert=:dessert,boissons=:boissos,tarif=:tarifn WHERE nom=:nom";
-		
-		$db = config::getConnexion();
-		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-try{		
-           $nom=$produit->getnom();
-            $entree=$produit->getentree();
-            $platPrincipal=$produit->getplatPrincipal();
-            $dessert=$produit->getdessert();
-            $boissons=$produit->getboissons();
-            $tarif=$produit->gettarif();
-            
-		$datas=array(':nom'=>$nom,':entree'=>$entree,':platPrincipal'=>$platPrincipal, ':dessert'=>$dessert,':boissons'=>$boissons,':tarif'=>$tarif);
-		
-		$req->bindValue(':nom',$nom);
-        $req->bindValue(':entree',$entree);
-        $req->bindValue(':platPrincipal',$platPrincipal);
-		$req->binValue(':dessert',$dessert);
-		$req->binValue(':boissons',$boissons);
-		$req->bindValue(':tarif',$tarif);
-		
-
-		$req->execute();
-		$result = $req->fetch(PDO::FETCH_OBJ);
-	    return $result;
-           // header('Location: index.php');
-        }
-        catch (Exception $e){
-            echo " Erreur ! ".$e->getMessage();
-   echo " Les datas : " ;
-  print_r($datas);
-        }
-		
-	}
-	 function supprimerproduit($nom)
-	{
-		$db = config::getConnexion();
-		$sql="DELETE FROM produit WHERE nom=:nom";
-		$req = $db->prepare($sql);
-		$req->bindValue(':nom',$nom);
-		try
-		{
-            $req->execute();
-           
-        }
-        catch (Exception $e)
-        {
-            die('Erreur: '.$e->getMessage());
-        }
-	}
-	function reccupererproduit($nom)
-	{
-		$sql="SELECT * From produit where nom=$nom";
-		$db=config::getConnexion();
-		try
-		{   
-			$liste=$db->query($sql);
-			return $liste;
-		}
-		catch (Exception $e)
-        {
-            die('Erreur: '.$e->getMessage());
-        }
-	}
 }
 ?>
