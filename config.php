@@ -8,7 +8,7 @@ class config
     if (!isset(self::$instance)) {
 
       try {
-        self::$instance = new PDO('mysql:host=localhost;dbname=le_surfin', 'root', '');
+        self::$instance = new PDO('mysql:host=localhost;dbname=login_registration', 'root', '');
         self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //pour afficher les erreurs
       } catch (Exception $e) {
